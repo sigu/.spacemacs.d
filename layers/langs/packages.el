@@ -40,7 +40,7 @@
 
   ;; Enables python shell to print unicode
   (setenv "PYTHONIOENCODING" "utf-8")
-  (setenv "LANG" "en_US.UTF-8")
+  (setenv "LANG" "en_GB.UTF-8")
 
   ;; Remove flyspell
   (add-hook 'python-mode-hook (lambda () (flyspell-mode -1)))

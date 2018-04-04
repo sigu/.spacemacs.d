@@ -93,11 +93,12 @@
    ;; active modeline has no colors
    (mode-line :inherit mode-line :background "#002b36"
               :box nil :underline nil :overline nil)
-   (mode-line-inactive :inherit mode-line :background "#002b36"
+   (mode-line-inactive :inherit mode-line :background "#073642"
                        :box nil :underline nil :overline nil)
-   (spaceline-highlight-face :inherit mode-line :background "#002b36")
-   (powerline-active1 :inherit mode-line :background "#002b36")
-   (powerline-active2 :inherit mode-line :background "#002b36")
+   ;; (spaceline-highlight-face :inherit mode-line :background "#073642")
+   (powerline-active1 :inherit mode-line :background "#073642")
+   (powerline-active2 :inherit mode-line :background "#073642")
+   ;; (powerline-active2 :inherit mode-line :background "#002b36")
 
    ;; Inactive modeline has tint
    (powerline-inactive2 :inherit powerline-inactive1 :background "#073642")

@@ -326,18 +326,19 @@
        'none
 
        spaceline-all-the-icons-primary-separator
-       "")
+       ""
+       )
 
       ;; Buffer Segments
       (spaceline-toggle-all-the-icons-buffer-size-off)
-      (spaceline-toggle-all-the-icons-buffer-position-off)
+      ;; (spaceline-toggle-all-the-icons-buffer-position-off)
 
       ;; Git Segments
-      (spaceline-toggle-all-the-icons-git-status-off)
-      (spaceline-toggle-all-the-icons-vc-icon-off)
+      ;; (spaceline-toggle-all-the-icons-git-status-off)
+      ;; (spaceline-toggle-all-the-icons-vc-icon-off)
       (spaceline-toggle-all-the-icons-vc-status-off)
 
       ;; Misc Segments
       (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
       (spaceline-toggle-all-the-icons-flycheck-status-off)
-      (spaceline-toggle-all-the-icons-time-off))))
+      )))

@@ -4,7 +4,7 @@
 
 ;;; API
 
-;;;###autoload
+;; ###autoload
 (defun pretty-fonts-set-fontsets (CODE-FONT-ALIST)
   "Utility to associate many unicode points with specified fonts."
   (--each CODE-FONT-ALIST
@@ -81,7 +81,7 @@
 
     ;; 2+3-Repeats
     ("\\(##\\)"       #Xe11b) ("\\(###\\)"         #Xe11c) ("\\(####\\)" #Xe11d)
-    ("\\(--\\)"       #Xe111) ("\\(---\\)"         #Xe112)
+    ;; ("\\(--\\)"       #Xe111) ("\\(---\\)"         #Xe112)
     ("\\({-\\)"       #Xe108) ("\\(-}\\)"          #Xe110)
     ("\\(\\\\\\\\\\)" #Xe106) ("\\(\\\\\\\\\\\\\\)" #Xe107)
     ("\\(\\.\\.\\)"   #Xe124) ("\\(\\.\\.\\.\\)"   #Xe126)

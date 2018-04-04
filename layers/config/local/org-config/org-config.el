@@ -51,6 +51,7 @@
    ("h" "#+BEGIN_SRC haskell\n\n#+END_SRC")
    ("l" "#+BEGIN_SRC lisp\n\n#+END_SRC")
    ("p" "#+BEGIN_SRC python\n\n#+END_SRC")
+   ("b" "#+BEGIN_SRC bash\n\n#+END_SRC")
 
    ;; Collapse previous header by default in themed html export
    ("clps" ":PROPERTIES:\n :HTML_CONTAINER_CLASS: hsCollapsed\n :END:\n")
@@ -73,8 +74,11 @@
 
 (ox-extras-activate '(ignore-headlines))
 
+(setq org-default-notes-file (os-path "~/Dropbox/emacs/notes.org"))
 (setq org-contacts-files (list (os-path "~/Dropbox/contacts.org")))
-(setq org-agenda-files (list (os-path "~/Dropbox/schedule.org")))
+(setq org-agenda-files (list (os-path "~/Dropbox/emacs/todo.org")
+                             (os-path "~/Dropbox/emacs/notes.org")
+                             ))
 
 (when linux?
   (setq org-file-apps '((auto-mode . emacs)
@@ -88,17 +92,14 @@
                                  ("fontsize" "\\scriptsize")
                                  ("xleftmargin" "\\parindent")
                                  ("linenos" "")))
-;; (setq
-;;  org-latex-pdf-process
-;;  '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;    "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;    "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+(setq
+ org-latex-pdf-process
+ '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+   "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+   "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-(setq reftex-default-bibliography '("~/dev/pop-synth/docs/paper/references.bib"))
-(setq org-ref-default-bibliography '("~/dev/pop-synth/docs/paper/references.bib"))
-
-(setq org-latex-pdf-process
-      '("latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
+;; (setq org-latex-pdf-process
+;;       '("latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
 
 ;;; Babel
 

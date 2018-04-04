@@ -9,7 +9,7 @@
 ;; All configuration is housed in personal layers - see README.
 ;; `init.el' configures spacemacs, defining required `dotspacemacs/...' functions.
 
-(defvar ERIC-ONLY? t
+(defvar ERIC-ONLY? nil
   "If cloning, set to nil, enable non-layer personal configuration.")
 
 (defvar linux? (eq system-type 'gnu/linux)
@@ -91,26 +91,24 @@
 ;;;; Langs
 
 (defvar dotspacemacs/layers/langs
-  '(c-c++
+  '(
     emacs-lisp
     javascript
-    rust
+    elixir
+    yaml
+    (typescript :variables
+                typescript-fmt-on-save t
+                typescript-fmt-tool 'prettier
+                )
 
     csv
     html
-    markdown
-
-    (clojure :variables
-             clojure-enable-fancify-symbols t)
-    ;; haskell
-    (haskell :variables
-             haskell-completion-backend 'intero)
-    (python :variables
-            python-sort-imports-on-save t
-            python-test-runner 'pytest
-            :packages
-            (not hy-mode)  ; I maintain `hy-mode', using local branch
-            )
+    (markdown
+     :variables markdown-live-preview-engine 'vmd)
+    (ruby :variables
+          ruby-test-runner 'rspec
+          )
+    ruby-on-rails
     )
   "Programming and markup language layers.")
 
@@ -122,6 +120,7 @@
     pdf-tools
     ranger
     treemacs
+    colors
 
     (ibuffer :variables
              ibuffer-group-buffers-by 'projects)
@@ -131,7 +130,17 @@
 ;;;; Layers/config
 
 (defun dotspacemacs/layers/config ()
-  (setq-default
+  (setq prettier-js-args '(
+                           "--single-quote" "true"
+                           ))
+   (add-hook 'js2-mode-hook 'prettier-js-mode)
+   (add-hook 'typescript-mode-hook 'prettier-js-mode)
+   (setq-default
+    css-indent-offset 2
+    web-mode-markup-indent-offset 2
+    web-mode-css-indent-offset 2
+    web-mode-code-indent-offset 2
+    web-mode-attr-indent-offset 2
 
    dotspacemacs-distribution
    'spacemacs
@@ -152,7 +161,8 @@
     dotspacemacs/layers/langs
     dotspacemacs/layers/extra
     )
-   ))
+   )
+   )
 
 ;;;; Layers/packages
 
@@ -163,6 +173,7 @@
    '(
      solarized-theme
      nord-theme
+     prettier-js
      )
 
    dotspacemacs-excluded-packages
@@ -215,23 +226,23 @@
 
    dotspacemacs-themes
    '(
-     zenburn
-     solarized-light
-     solarized-dark
-     nord  ; Minimal theme modifications for nord
+     ;; nord  ; Minimal theme modifications for nord
+     ;; solarized-dark
+     ;; zenburn
+     ;; solarized-light
      )
 
    dotspacemacs-default-font
    `(
-     "operator mono medium"
+     "fira code retina"
      :size ,(cond ((not linux?) 12)
-                  (desktop? 20)
-                  (t 30))
+                  (desktop? 12)
+                  (t 12))
      :powerline-scale 1.5
      )
 
    dotspacemacs-fullscreen-at-startup
-   (if linux? nil t)
+   t
 
    dotspacemacs-fullscreen-use-non-native
    nil
@@ -384,7 +395,7 @@
    nil
 
    dotspacemacs-elpa-https
-   t
+   nil
 
    dotspacemacs-elpa-timeout
    5
@@ -405,10 +416,11 @@
    nil
 
    dotspacemacs-startup-banner
-   'official
+   'random
 
    dotspacemacs-startup-lists
-   '()
+   '((recents  . 5)
+     (projects . 7))
 
    dotspacemacs-startup-buffer-responsive
    t
@@ -425,9 +437,11 @@
   (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-mode-line-minor-modes-off)
   (spacemacs/toggle-aggressive-indent-globally-on)
+  (spacemacs/toggle-indent-guide-globally-on)
   (global-highlight-parentheses-mode 1)
   (rainbow-delimiters-mode-enable)
-  (fringe-mode '(0 . 8)))
+  ;; (fringe-mode '(0 . 8))
+  )
 
 ;;;; Experiments
 

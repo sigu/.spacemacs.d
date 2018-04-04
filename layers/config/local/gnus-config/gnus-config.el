@@ -5,10 +5,10 @@
 
 (setq
  user-mail-address
- "ekaschalk@gmail.com"
+ "sigumagwa@gmail.com"
 
  user-full-name
- "Eric Kaschalk"
+ "Sigu Magwa"
 
  ;; Get mail
  gnus-secondary-select-methods
